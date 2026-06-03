@@ -35,6 +35,8 @@ Wait ~30 seconds for MySQL and WordPress, then run setup:
 
 **Windows (PowerShell):**
 
+If scripts are blocked, run once: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+
 ```powershell
 .\scripts\wp-setup.ps1
 ```
