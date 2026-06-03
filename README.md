@@ -2,7 +2,6 @@
 
 A technical assessment implementation: a responsive, accessible lead-capture form built twice (WordPress theme + Next.js), backed by a custom WordPress plugin with REST API storage and an admin submissions viewer.
 
-> **Naming note:** The brief references a `jfrog_submissions` table. Per submission guidelines, this project uses `{prefix}lead_submissions` instead and avoids vendor-specific naming in the repository.
 
 ## Repository structure
 
@@ -69,6 +68,10 @@ npm run dev
 Open http://localhost:3000. Submissions are sent to the WordPress REST API (`source: nextjs`).
 
 Ensure WordPress is running before testing Next.js submissions.
+
+Copy `nextjs/.env.example` to `nextjs/.env.local` and restart `npm run dev` after changing env vars.
+
+**Next.js shows “Unable to reach the server” but WordPress form works:** WordPress was likely using plain permalinks, so `/wp-json/...` returns HTML instead of the REST API. Re-run `.\scripts\wp-setup.ps1` (enables pretty permalinks), or set `NEXT_PUBLIC_WP_API_URL` in `.env.local` to `http://localhost:8080/index.php?rest_route=/lead-capture/v1` and restart the Next dev server.
 
 ### 3. Activate plugin & theme manually (optional)
 

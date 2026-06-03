@@ -81,10 +81,14 @@ export function ApplicationForm() {
         type: 'error',
         message: data.message ?? 'Something went wrong. Please try again.',
       });
-    } catch {
+    } catch (err) {
+      const message =
+        err instanceof Error && err.message
+          ? err.message
+          : 'Unable to reach the server. Is WordPress running?';
       setStatus({
         type: 'error',
-        message: 'Unable to reach the server. Is WordPress running?',
+        message,
       });
     } finally {
       setSubmitting(false);
@@ -110,8 +114,7 @@ export function ApplicationForm() {
         <form className="lc-form" onSubmit={handleSubmit} noValidate aria-describedby="lc-form-status">
           <div className="lc-form__grid">
             <div className="lc-field">
-              <label className="lc-field__label" htmlFor="firstName">
-                <span className="lc-field__required" aria-hidden="true">*</span>
+              <label className="lc-field__label lc-sr-only" htmlFor="firstName">
                 First Name
               </label>
               <input
@@ -120,6 +123,7 @@ export function ApplicationForm() {
                 className={fieldClass(Boolean(errors.firstName))}
                 value={fields.firstName}
                 onChange={(e) => updateField('firstName', e.target.value)}
+                placeholder="*First Name"
                 autoComplete="given-name"
                 required
                 aria-required="true"
@@ -135,8 +139,7 @@ export function ApplicationForm() {
             </div>
 
             <div className="lc-field">
-              <label className="lc-field__label" htmlFor="lastName">
-                <span className="lc-field__required" aria-hidden="true">*</span>
+              <label className="lc-field__label lc-sr-only" htmlFor="lastName">
                 Last Name
               </label>
               <input
@@ -145,6 +148,7 @@ export function ApplicationForm() {
                 className={fieldClass(Boolean(errors.lastName))}
                 value={fields.lastName}
                 onChange={(e) => updateField('lastName', e.target.value)}
+                placeholder="*Last Name"
                 autoComplete="family-name"
                 required
                 aria-required="true"
@@ -160,8 +164,7 @@ export function ApplicationForm() {
             </div>
 
             <div className="lc-field">
-              <label className="lc-field__label" htmlFor="email">
-                <span className="lc-field__required" aria-hidden="true">*</span>
+              <label className="lc-field__label lc-sr-only" htmlFor="email">
                 Email
               </label>
               <input
@@ -171,6 +174,7 @@ export function ApplicationForm() {
                 className={fieldClass(Boolean(errors.email))}
                 value={fields.email}
                 onChange={(e) => updateField('email', e.target.value)}
+                placeholder="*Email"
                 autoComplete="email"
                 required
                 aria-required="true"
@@ -185,7 +189,7 @@ export function ApplicationForm() {
             </div>
 
             <div className="lc-field">
-              <label className="lc-field__label" htmlFor="phone">
+              <label className="lc-field__label lc-sr-only" htmlFor="phone">
                 Phone Number
               </label>
               <input
@@ -195,6 +199,7 @@ export function ApplicationForm() {
                 className={fieldClass(Boolean(errors.phone))}
                 value={fields.phone}
                 onChange={(e) => updateField('phone', e.target.value)}
+                placeholder="Phone Number"
                 autoComplete="tel"
                 inputMode="tel"
                 aria-invalid={Boolean(errors.phone)}
@@ -208,7 +213,7 @@ export function ApplicationForm() {
             </div>
 
             <div className="lc-field">
-              <label className="lc-field__label" htmlFor="country">
+              <label className="lc-field__label lc-sr-only" htmlFor="country">
                 Country
               </label>
               <div className="lc-field__select-wrap">
@@ -229,10 +234,12 @@ export function ApplicationForm() {
             </div>
 
             <div className="lc-field">
-              <label className="lc-field__label" htmlFor="dateOfBirth">
+              <label className="lc-field__label lc-sr-only" htmlFor="dateOfBirth">
                 Date of Birth
               </label>
-              <div className="lc-field__date-wrap">
+              <div
+                className={`lc-field__date-wrap${fields.dateOfBirth ? '' : ' lc-field__date-wrap--empty'}`}
+              >
                 <input
                   id="dateOfBirth"
                   name="dateOfBirth"
@@ -251,6 +258,8 @@ export function ApplicationForm() {
               )}
             </div>
           </div>
+
+          <hr className="lc-form__divider" aria-hidden="true" />
 
           <div className="lc-form__consent">
             <input
@@ -284,10 +293,7 @@ export function ApplicationForm() {
 
           <div className="lc-form__actions">
             <button type="submit" className="lc-button" disabled={submitting}>
-              <span className="lc-button__text">{submitting ? 'Submitting…' : 'Submit'}</span>
-              <span className="lc-button__arrow" aria-hidden="true">
-                &gt;
-              </span>
+              {submitting ? 'Submitting…' : 'SUBMIT >'}
             </button>
           </div>
 

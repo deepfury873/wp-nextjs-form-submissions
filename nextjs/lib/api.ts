@@ -38,6 +38,13 @@ export async function submitApplication(payload: SubmitPayload) {
     body: JSON.stringify(payload),
   });
 
+  const contentType = response.headers.get('content-type') ?? '';
+  if (!contentType.includes('application/json')) {
+    throw new Error(
+      'WordPress did not return JSON. Enable pretty permalinks (re-run .\\scripts\\wp-setup.ps1) or set NEXT_PUBLIC_WP_API_URL to the index.php?rest_route= base URL in nextjs/.env.local.'
+    );
+  }
+
   const data = await response.json();
   return { ok: response.ok, data };
 }

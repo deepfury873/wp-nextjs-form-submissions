@@ -8,3 +8,13 @@ node_modules/
 Thumbs.db
 wordpress_data/
 db_data/
+
+# WordPress core-bundled defaults (not part of this project)
+wordpress/wp-content/index.php
+wordpress/wp-content/plugins/akismet/
+wordpress/wp-content/plugins/hello.php
+wordpress/wp-content/plugins/index.php
+wordpress/wp-content/themes/index.php
+wordpress/wp-content/themes/twentytwentythree/
+wordpress/wp-content/themes/twentytwentyfour/
+wordpress/wp-content/themes/twentytwentyfive/

@@ -19,6 +19,8 @@ $countries = array(
 	'Israel'        => __( 'Israel', 'lead-capture-theme' ),
 	'Other'         => __( 'Other', 'lead-capture-theme' ),
 );
+
+$theme_uri = get_template_directory_uri();
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -31,12 +33,12 @@ $countries = array(
 <?php wp_body_open(); ?>
 
 <main class="lc-page" id="main-content">
-	<p class="lc-page__eyebrow">Submit Your Application</p>
+	<p class="lc-page__eyebrow"><?php esc_html_e( 'Submit Your Application', 'lead-capture-theme' ); ?></p>
 
 	<section class="lc-card" aria-labelledby="lc-form-heading">
 		<header class="lc-card__header">
-			<h1 id="lc-form-heading" class="lc-card__title">Personal Information</h1>
-			<p class="lc-card__subtitle">Please fill in all mandatory fields</p>
+			<h1 id="lc-form-heading" class="lc-card__title"><?php esc_html_e( 'Personal Information', 'lead-capture-theme' ); ?></h1>
+			<p class="lc-card__subtitle"><?php esc_html_e( 'Please fill in all mandatory fields', 'lead-capture-theme' ); ?></p>
 		</header>
 
 		<form
@@ -47,14 +49,13 @@ $countries = array(
 		>
 			<div class="lc-form__grid">
 				<div class="lc-field">
-					<label class="lc-field__label" for="first_name">
-						<span class="lc-field__required" aria-hidden="true">*</span>First Name
-					</label>
+					<label class="lc-field__label lc-sr-only" for="first_name"><?php esc_html_e( 'First Name', 'lead-capture-theme' ); ?></label>
 					<input
 						class="lc-field__input"
 						type="text"
 						id="first_name"
 						name="first_name"
+						placeholder="<?php esc_attr_e( '*First Name', 'lead-capture-theme' ); ?>"
 						autocomplete="given-name"
 						required
 						aria-required="true"
@@ -64,14 +65,13 @@ $countries = array(
 				</div>
 
 				<div class="lc-field">
-					<label class="lc-field__label" for="last_name">
-						<span class="lc-field__required" aria-hidden="true">*</span>Last Name
-					</label>
+					<label class="lc-field__label lc-sr-only" for="last_name"><?php esc_html_e( 'Last Name', 'lead-capture-theme' ); ?></label>
 					<input
 						class="lc-field__input"
 						type="text"
 						id="last_name"
 						name="last_name"
+						placeholder="<?php esc_attr_e( '*Last Name', 'lead-capture-theme' ); ?>"
 						autocomplete="family-name"
 						required
 						aria-required="true"
@@ -81,14 +81,13 @@ $countries = array(
 				</div>
 
 				<div class="lc-field">
-					<label class="lc-field__label" for="email">
-						<span class="lc-field__required" aria-hidden="true">*</span>Email
-					</label>
+					<label class="lc-field__label lc-sr-only" for="email"><?php esc_html_e( 'Email', 'lead-capture-theme' ); ?></label>
 					<input
 						class="lc-field__input"
 						type="email"
 						id="email"
 						name="email"
+						placeholder="<?php esc_attr_e( '*Email', 'lead-capture-theme' ); ?>"
 						autocomplete="email"
 						required
 						aria-required="true"
@@ -97,12 +96,13 @@ $countries = array(
 				</div>
 
 				<div class="lc-field">
-					<label class="lc-field__label" for="phone">Phone Number</label>
+					<label class="lc-field__label lc-sr-only" for="phone"><?php esc_html_e( 'Phone Number', 'lead-capture-theme' ); ?></label>
 					<input
 						class="lc-field__input"
 						type="tel"
 						id="phone"
 						name="phone"
+						placeholder="<?php esc_attr_e( 'Phone Number', 'lead-capture-theme' ); ?>"
 						autocomplete="tel"
 						inputmode="tel"
 					>
@@ -110,7 +110,7 @@ $countries = array(
 				</div>
 
 				<div class="lc-field">
-					<label class="lc-field__label" for="country">Country</label>
+					<label class="lc-field__label lc-sr-only" for="country"><?php esc_html_e( 'Country', 'lead-capture-theme' ); ?></label>
 					<div class="lc-field__select-wrap">
 						<select class="lc-field__input lc-field__input--select" id="country" name="country">
 							<?php foreach ( $countries as $value => $label ) : ?>
@@ -121,8 +121,8 @@ $countries = array(
 				</div>
 
 				<div class="lc-field">
-					<label class="lc-field__label" for="date_of_birth">Date of Birth</label>
-					<div class="lc-field__date-wrap">
+					<label class="lc-field__label lc-sr-only" for="date_of_birth"><?php esc_html_e( 'Date of Birth', 'lead-capture-theme' ); ?></label>
+					<div class="lc-field__date-wrap lc-field__date-wrap--empty" id="date_of_birth-wrap">
 						<input
 							class="lc-field__input"
 							type="date"
@@ -134,6 +134,8 @@ $countries = array(
 				</div>
 			</div>
 
+			<hr class="lc-form__divider" aria-hidden="true">
+
 			<div class="lc-form__consent">
 				<input
 					class="lc-checkbox"
@@ -144,25 +146,37 @@ $countries = array(
 					aria-required="true"
 				>
 				<label class="lc-checkbox__label" for="consent">
-					I have read and agree to the
-					<a href="#" class="lc-link">Terms and Conditions</a>
-					and the
-					<a href="#" class="lc-link">Privacy Policy</a>
+					<?php esc_html_e( 'I have read and agree to the', 'lead-capture-theme' ); ?>
+					<a href="#" class="lc-link"><?php esc_html_e( 'Terms and Conditions', 'lead-capture-theme' ); ?></a>
+					<?php esc_html_e( 'and the', 'lead-capture-theme' ); ?>
+					<a href="#" class="lc-link"><?php esc_html_e( 'Privacy Policy', 'lead-capture-theme' ); ?></a>
 				</label>
 			</div>
 			<p class="lc-field__error lc-field__error--consent" id="consent-error" role="alert" hidden></p>
 
 			<div class="lc-form__actions">
 				<button type="submit" class="lc-button" id="submit-btn">
-					<span class="lc-button__text">Submit</span>
-					<span class="lc-button__arrow" aria-hidden="true">&gt;</span>
+					<?php esc_html_e( 'SUBMIT >', 'lead-capture-theme' ); ?>
 				</button>
 			</div>
 
 			<p id="lc-form-status" class="lc-form__status" role="status" aria-live="polite"></p>
 
 			<div class="lc-card__illustration" aria-hidden="true">
-				<?php include get_template_directory() . '/assets/images/illustration.svg'; ?>
+				<img
+					src="<?php echo esc_url( $theme_uri . '/assets/images/form-illustration.png' ); ?>"
+					width="301"
+					height="280"
+					alt=""
+					class="lc-card__illustration-img lc-card__illustration-img--desktop"
+				>
+				<img
+					src="<?php echo esc_url( $theme_uri . '/assets/images/form-illustration-mobile.png' ); ?>"
+					width="216"
+					height="196"
+					alt=""
+					class="lc-card__illustration-img lc-card__illustration-img--mobile"
+				>
 			</div>
 		</form>
 	</section>

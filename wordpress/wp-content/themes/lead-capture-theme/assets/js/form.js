@@ -11,6 +11,13 @@
 
 	var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	var phonePattern = /^[\d\s\-+().]{6,50}$/;
+	var dateWrap = document.getElementById('date_of_birth-wrap');
+	var dateInput = document.getElementById('date_of_birth');
+
+	function syncDateWrap() {
+		if (!dateWrap || !dateInput) return;
+		dateWrap.classList.toggle('lc-field__date-wrap--empty', !dateInput.value);
+	}
 
 	function showError(fieldId, message) {
 		var input = document.getElementById(fieldId);
@@ -132,6 +139,7 @@
 				if (result.ok && result.data.success) {
 					setStatus(result.data.message || i18n.success, 'success');
 					form.reset();
+					syncDateWrap();
 					return;
 				}
 
@@ -158,9 +166,14 @@
 		if (el) {
 			el.addEventListener('input', function () {
 				clearError(id);
+				if (id === 'date_of_birth') {
+					syncDateWrap();
+				}
 			});
 		}
 	});
+
+	syncDateWrap();
 
 	form.consent.addEventListener('change', function () {
 		clearError('consent');

@@ -99,6 +99,13 @@ if ($meta.ExitCode -ne 0) {
     exit 1
 }
 
+$permalinks = Invoke-WpCli -Args @('rewrite', 'structure', '/%postname%/')
+if ($permalinks.ExitCode -ne 0) {
+    Write-Host (Get-WpCliStdout $permalinks)
+    Write-Error "Failed to enable pretty permalinks (required for /wp-json REST URLs)"
+    exit 1
+}
+
 $flush = Invoke-WpCli -Args @('rewrite', 'flush')
 if ($flush.ExitCode -ne 0) {
     Write-Host (Get-WpCliStdout $flush)

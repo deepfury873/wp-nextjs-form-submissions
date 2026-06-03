@@ -25,6 +25,7 @@ PAGE_ID=$(docker compose run --rm wp-cli post create \
   --porcelain)
 
 docker compose run --rm wp-cli post meta update "$PAGE_ID" _wp_page_template template-application.php --path=/var/www/html
+docker compose run --rm wp-cli rewrite structure '/%postname%/' --path=/var/www/html
 docker compose run --rm wp-cli rewrite flush --path=/var/www/html
 
 echo "Done. Form: http://localhost:8080/?page_id=$PAGE_ID"

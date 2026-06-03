@@ -1,20 +1,21 @@
+/* Design tokens — extracted from Figma file tdF37b9Kq9ZZTIOA84TjG3 */
+
 :root {
-  --lc-bg: #f4f7f9;
-  --lc-card: #ffffff;
-  --lc-eyebrow: #9eb8cb;
-  --lc-text: #1a1a1a;
-  --lc-muted: #8a8a8a;
-  --lc-border: #d8dde2;
-  --lc-border-focus: #64a1d8;
-  --lc-primary: #64a1d8;
-  --lc-primary-hover: #4f8fc8;
+  --lc-bg: #eff3f8;
+  --lc-card: #fafafa;
+  --lc-eyebrow: #b1bcca;
+  --lc-text: #000000;
+  --lc-muted: #686868;
+  --lc-border: #686868;
+  --lc-divider: #949494;
+  --lc-primary: #61a4d9;
+  --lc-primary-deep: #4e99cd;
+  --lc-check: #40be46;
   --lc-error: #c0392b;
   --lc-success: #6ab02e;
-  --lc-grid-gap: 1.25rem;
-  --lc-radius: 2px;
-  --lc-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-  --lc-max-width: 920px;
-  --lc-content-width: min(100% - 2rem, var(--lc-max-width));
+  --lc-white: #ffffff;
+  --lc-shadow: 0px 4px 44px -1px rgba(0, 0, 0, 0.07);
+  --lc-font: var(--font-exo), 'Exo', sans-serif;
 }
 
 *,
@@ -25,176 +26,305 @@
 
 body {
   margin: 0;
-  font-size: 16px;
-  line-height: 1.5;
+  font-family: var(--lc-font);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: normal;
   color: var(--lc-text);
   background: var(--lc-bg);
 }
 
+.lc-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* —— Desktop (Full HD frame 1920×1200) —— */
+
 .lc-page {
   min-height: 100vh;
-  padding: 2.5rem 1rem 3rem;
+  padding: 79.078px 0 48px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .lc-page__eyebrow {
-  width: var(--lc-content-width);
-  margin: 0 0 1rem;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  width: auto;
+  height: 20px;
+  margin: 0 0 55.922px;
+  font-family: var(--lc-font);
+  font-size: 21px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0;
+  text-align: center;
   text-transform: uppercase;
+  white-space: nowrap;
   color: var(--lc-eyebrow);
 }
 
 .lc-card {
   position: relative;
-  width: var(--lc-content-width);
+  width: 974px;
+  min-height: 705px;
   background: var(--lc-card);
   box-shadow: var(--lc-shadow);
-  padding: 2rem 2rem 8rem;
+  padding: 32px 63px 13px;
   overflow: hidden;
 }
 
 .lc-card__header {
-  margin-bottom: 1.75rem;
+  margin-bottom: 40.786px;
 }
 
 .lc-card__title {
-  margin: 0 0 0.35rem;
-  font-size: 1.375rem;
+  margin: 0 0 18.5px;
+  font-family: var(--lc-font);
+  font-size: 21px;
   font-weight: 700;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0;
+  color: var(--lc-text);
 }
 
 .lc-card__subtitle {
   margin: 0;
-  font-size: 0.875rem;
+  font-family: var(--lc-font);
+  font-size: 19px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0;
   color: var(--lc-muted);
 }
 
 .lc-form__grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--lc-grid-gap);
+  grid-template-columns: 335px 335px;
+  column-gap: 42.938px;
+  row-gap: 30.594px;
+  width: 712.938px;
 }
 
-@media (min-width: 768px) {
-  .lc-form__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.lc-field:nth-child(5),
+.lc-field:nth-child(6) {
+  margin-top: 0.406px;
 }
 
 .lc-field__label {
   display: block;
-  margin-bottom: 0.4rem;
-  font-size: 0.875rem;
-  color: var(--lc-muted);
-}
-
-.lc-field__required {
-  color: var(--lc-muted);
 }
 
 .lc-field__input {
-  width: 100%;
-  padding: 0.65rem 0.75rem;
-  font: inherit;
+  width: 335px;
+  height: 48px;
+  margin: 0;
+  padding: 12px 15px;
+  font-family: var(--lc-font);
+  font-size: 15px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: 0;
   color: var(--lc-text);
-  background: #fff;
+  background: var(--lc-card);
   border: 1px solid var(--lc-border);
-  border-radius: var(--lc-radius);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  border-radius: 0;
+}
+
+.lc-field__input::placeholder {
+  color: var(--lc-text);
+  opacity: 1;
 }
 
 .lc-field__input:focus {
   outline: none;
-  border-color: var(--lc-border-focus);
-  box-shadow: 0 0 0 3px rgba(100, 161, 216, 0.25);
+  border-color: var(--lc-primary);
 }
 
 .lc-field__input--invalid {
   border-color: var(--lc-error);
 }
 
+.lc-field__select-wrap,
+.lc-field__date-wrap {
+  position: relative;
+  width: 335px;
+  height: 48px;
+}
+
 .lc-field__input--select {
   appearance: none;
-  padding-right: 2rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238a8a8a' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  padding-right: 33.5px;
+  background-image: url('/images/select-chevron.svg');
   background-repeat: no-repeat;
-  background-position: right 0.75rem center;
+  background-position: right 11.5px center;
+  background-size: 7.5px 4.5px;
+  cursor: pointer;
+}
+
+.lc-field__date-wrap .lc-field__input {
+  width: 335px;
+  padding-right: 40px;
+}
+
+.lc-field__date-wrap--empty::before {
+  content: 'Date of Birth';
+  position: absolute;
+  left: 15px;
+  top: 12px;
+  font-family: var(--lc-font);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--lc-text);
+  pointer-events: none;
+}
+
+.lc-field__date-wrap--empty .lc-field__input {
+  color: transparent;
+}
+
+.lc-field__date-wrap--empty:focus-within::before {
+  display: none;
+}
+
+.lc-field__date-wrap--empty .lc-field__input:focus {
+  color: var(--lc-text);
+}
+
+.lc-field__date-wrap::after {
+  content: '';
+  position: absolute;
+  right: 15px;
+  top: 16.235px;
+  width: 15.529px;
+  height: 15.529px;
+  background: url('/images/calendar-icon.png') center / contain no-repeat;
+  pointer-events: none;
+}
+
+.lc-field__date-wrap .lc-field__input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  width: 40px;
+  height: 48px;
+  cursor: pointer;
 }
 
 .lc-field__error {
-  margin: 0.35rem 0 0;
-  font-size: 0.8125rem;
+  margin: 6px 0 0;
+  font-size: 13px;
+  line-height: normal;
   color: var(--lc-error);
 }
 
 .lc-field__error--consent {
-  margin-top: 0.5rem;
+  margin-top: 8px;
+  padding-left: 38px;
+}
+
+.lc-form__divider {
+  width: 716.176px;
+  height: 0;
+  margin: 54.926px 0 0;
+  padding: 0;
+  border: none;
+  border-top: 1px solid var(--lc-divider);
 }
 
 .lc-form__consent {
   display: flex;
   align-items: flex-start;
-  gap: 0.65rem;
-  margin-top: 1.5rem;
-  padding-top: 1.25rem;
-  border-top: 1px dotted #d0d5da;
+  gap: 14px;
+  width: auto;
+  margin-top: 44.962px;
 }
 
 .lc-checkbox {
   flex-shrink: 0;
-  width: 1.125rem;
-  height: 1.125rem;
-  margin-top: 0.15rem;
-  accent-color: var(--lc-success);
+  width: 24px;
+  height: 24px;
+  margin: 2px 0 0;
+  appearance: none;
+  background-color: var(--lc-card);
+  border: 1px solid var(--lc-border);
+  border-radius: 0;
   cursor: pointer;
 }
 
+.lc-checkbox:checked {
+  background: var(--lc-card) url('/images/checkmark.svg') center / 15.703px 14.642px no-repeat;
+}
+
+.lc-checkbox:focus-visible {
+  outline: 2px solid var(--lc-primary);
+  outline-offset: 2px;
+}
+
 .lc-checkbox__label {
-  font-size: 0.875rem;
-  color: var(--lc-muted);
+  font-family: var(--lc-font);
+  font-size: 15px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 126.336%;
+  letter-spacing: 0;
+  white-space: nowrap;
+  color: var(--lc-text);
   cursor: pointer;
 }
 
 .lc-link {
-  color: var(--lc-text);
   font-weight: 700;
+  color: var(--lc-text);
   text-decoration: underline;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
 }
 
 .lc-link:focus-visible {
-  outline: 2px solid var(--lc-border-focus);
+  outline: 2px solid var(--lc-primary);
   outline-offset: 2px;
 }
 
 .lc-form__actions {
-  margin-top: 1.5rem;
+  margin-top: 34.34px;
 }
 
 .lc-button {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.7rem 1.75rem;
-  font: inherit;
-  font-size: 0.8125rem;
+  justify-content: center;
+  width: 173px;
+  height: 52px;
+  padding: 0;
+  font-family: var(--lc-font);
+  font-size: 17px;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  font-style: normal;
+  line-height: 167.9%;
+  letter-spacing: 0;
   text-transform: uppercase;
-  color: #fff;
-  background: var(--lc-primary);
+  color: var(--lc-white);
+  background-color: var(--lc-primary);
   border: none;
-  border-radius: var(--lc-radius);
+  border-radius: 0;
   cursor: pointer;
-  transition: background 0.15s ease;
 }
 
 .lc-button:hover:not(:disabled) {
-  background: var(--lc-primary-hover);
+  background-color: var(--lc-primary-deep);
 }
 
 .lc-button:focus-visible {
@@ -208,9 +338,10 @@ body {
 }
 
 .lc-form__status {
-  margin-top: 1rem;
-  font-size: 0.875rem;
-  min-height: 1.25rem;
+  margin-top: 16px;
+  font-size: 15px;
+  line-height: normal;
+  min-height: 20px;
 }
 
 .lc-form__status--success {
@@ -223,37 +354,188 @@ body {
 
 .lc-card__illustration {
   position: absolute;
-  right: 1rem;
-  bottom: 0.5rem;
-  width: min(280px, 45%);
-  max-width: 320px;
+  top: 412.107px;
+  right: 11px;
+  width: 301px;
+  height: 280px;
   pointer-events: none;
 }
 
-.lc-card__illustration svg {
-  width: 100%;
-  height: auto;
+.lc-card__illustration-img {
   display: block;
+  object-fit: contain;
 }
 
+.lc-card__illustration-img--mobile {
+  display: none;
+}
+
+.lc-card__illustration-img--desktop {
+  width: 301px;
+  height: 280px;
+}
+
+/* —— Mobile (375×1200 frame) —— */
+
 @media (max-width: 767px) {
-  .lc-card {
-    padding-bottom: 1.5rem;
+  .lc-page {
+    padding: 49.29px 22px 32px;
   }
 
-  .lc-card__illustration {
-    position: static;
-    width: min(240px, 80%);
-    margin: 2rem auto 0;
+  .lc-page__eyebrow {
+    width: auto;
+    margin-bottom: 34.71px;
+  }
+
+  .lc-card {
+    width: 328px;
+    min-height: 792px;
+    padding: 32px 19.733px 0;
+  }
+
+  .lc-card__header {
+    margin-bottom: 28.814px;
+  }
+
+  .lc-card__title {
+    margin-bottom: 13.599px;
+    font-size: 15.436px;
+    line-height: 14.701px;
+  }
+
+  .lc-card__subtitle {
+    font-size: 13.966px;
+    line-height: 14.701px;
+  }
+
+  .lc-form__grid {
+    display: flex;
+    flex-direction: column;
+    width: 289.019px;
+    gap: 0;
+  }
+
+  .lc-field {
+    margin-bottom: 0;
+  }
+
+  .lc-field:nth-child(1) {
+    margin-bottom: 24.399px;
+  }
+
+  .lc-field:nth-child(2) {
+    margin-bottom: 22.948px;
+  }
+
+  .lc-field:nth-child(3) {
+    margin-bottom: 22.948px;
+  }
+
+  .lc-field:nth-child(4) {
+    margin-bottom: 22.188px;
+  }
+
+  .lc-field:nth-child(5) {
+    margin-bottom: 22.178px;
+  }
+
+  .lc-field:nth-child(6) {
+    margin-bottom: 0;
+  }
+
+  .lc-field:nth-child(5),
+  .lc-field:nth-child(6) {
+    margin-top: 0;
+  }
+
+  .lc-field__input {
+    width: 289.019px;
+    height: 41.412px;
+    padding: 10.376px 12.941px;
+    font-size: 12.941px;
+    line-height: 17.255px;
+    border-width: 0.863px;
+  }
+
+  .lc-field__select-wrap,
+  .lc-field__date-wrap {
+    width: 289.019px;
+    height: 41.412px;
+  }
+
+  .lc-field__date-wrap .lc-field__input {
+    width: 289.019px;
+  }
+
+  .lc-field__input--select {
+    background-position: right 10.17px center;
+    background-size: 6.471px 3.882px;
+    padding-right: 28px;
+  }
+
+  .lc-field__date-wrap--empty::before {
+    left: 12.941px;
+    top: 10.376px;
+    font-size: 12.941px;
+    line-height: 17.255px;
+  }
+
+  .lc-field__date-wrap::after {
+    right: 10.17px;
+    top: 12.908px;
+    width: 15.529px;
+    height: 15.529px;
+  }
+
+  .lc-field__date-wrap .lc-field__input::-webkit-calendar-picker-indicator {
+    height: 41.412px;
+  }
+
+  .lc-form__divider {
+    display: none;
+  }
+
+  .lc-form__consent {
+    width: 294px;
+    margin-top: 28.52px;
+    gap: 13px;
+  }
+
+  .lc-checkbox__label {
+    font-size: 13px;
+    line-height: 126.336%;
+    white-space: normal;
   }
 
   .lc-form__actions {
+    margin-top: 33.71px;
     text-align: center;
   }
 
   .lc-button {
-    width: 100%;
-    justify-content: center;
+    width: 173px;
+    height: 52px;
+  }
+
+  .lc-card__illustration {
+    position: static;
+    width: 215.836px;
+    height: 196.261px;
+    margin: 28.51px auto 0;
+  }
+
+  .lc-card__illustration-img--desktop {
+    display: none;
+  }
+
+  .lc-card__illustration-img--mobile {
+    display: block;
+    width: 215.836px;
+    height: 196.261px;
+  }
+
+  .lc-field__error--consent {
+    padding-left: 0;
   }
 }
 
